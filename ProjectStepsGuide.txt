@@ -1,0 +1,36 @@
+Docker Project hosting app
+
+-Using Node JS
+-Open code folder in vs code  (i saved in my local system Sample)
+-Open terminal
+-Run command --> npm install
+-Run command --> npm start
+-Create Docker file
+Add below instruction
+
+# Use base image for running
+FROM node:21-alpine
+# Set any working folder in container 
+WORKDIR /Project
+# Copy all the files inside folders
+COPY . .
+# Used for install dependencies 
+RUN npm install
+# Expose the port on which our node js app run
+EXPOSE 3000
+# Command to run our application
+CMD ["npm","start" ]
+
+-Save 
+-Now we want to create docker image 
+-Command Docker build -t mytodoapp . (Image name mytodoapp)
+-Now create container
+-Command Docker run -d -p 3000:3000(your port) --name myapp(container name any) mytodoapp(your image name)
+Check in Docker desktop image and container created. 
+
+If you want to push then push image in docker hub
+Step 
+-Open Docker hub and login in chrome and create repository any name
+-in terminal type rename your existing image with Docker hub push cmd (surdas96/mytodoapp:tagname) tagname= Version 
+-Docker tag Current image name surdas96/mytodoapp:01 
+-Docker push surdas96/mytodoapp:01 -To push in repo
